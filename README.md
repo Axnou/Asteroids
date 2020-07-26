@@ -1,6 +1,6 @@
 # Asteroids
 Ohjelma tarvitsee oikein toimiakseen Java JDK 11:sta tai uudemman sekä JavaFX:n.
-IntelliJ ohjelmointiympäristössä Java FX polku lisätääån ohjelmistoon seuraavalla tavalla:
+IntelliJ ohjelmointiympäristössä Java FX polku lisätään ohjelmistoon seuraavalla tavalla:
 File > Project Structure > ADD (+) > Java > Asema\JavaFXKansio\JavaFX\javafx-sdk-11.0.2\lib
 
 Tämän lisäksi Vm options täytyy päivittää oikeaksi:
