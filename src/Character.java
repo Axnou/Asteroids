@@ -2,7 +2,8 @@ import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
 
-
+//Kaikki peliin luotavat oliot ovat perusominaisuuksiltaan hyvin samanlaisia.
+//On siis järkevää rakentaa abstract class jonka muut oliot perivät
 public abstract class Character {
     private Polygon shape;
     private Point2D movement;
