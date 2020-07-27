@@ -9,6 +9,7 @@ public abstract class Character {
     private Point2D movement;
     private boolean alive;
 
+    //Hahmon luonti
     public Character(int x, int y, Polygon polygon) {
         this.shape = polygon;
         this.shape.setTranslateX(x);
@@ -18,14 +19,17 @@ public abstract class Character {
         this.movement = new Point2D(0, 0);
     }
 
+    //Epämieluisten kappaleiden törmätessä elossa-status vaihtuu
     public void setAlive(boolean state) {
         this.alive = state;
     }
 
+    //käytetään havaitsemaan törmäyksiä
     public boolean isAlive() {
         return alive;
     }
 
+    //palauttaa kappaleen monikulmion
     public Polygon getShape() {
         return shape;
     }
@@ -42,6 +46,8 @@ public abstract class Character {
         this.shape.setTranslateX(this.shape.getTranslateX() + this.movement.getX());
         this.shape.setTranslateY(this.shape.getTranslateY() + this.movement.getY());
 
+        //Huolehtii siitä. että kappale pysyy ruudussa.
+        //Jos kappale menee ruudun ulkopuolelle, palauttaa kappaleen ruudun vastakkaiselle puolelle.
         if (this.shape.getTranslateX() < 0) {
             this.shape.setTranslateX(this.shape.getTranslateX() + AsteroidsTheGame.width);
         }
@@ -56,6 +62,7 @@ public abstract class Character {
         }
     }
 
+    //kiihdyttää aluksen nopeutta
     public void accelerate() {
         double changeX = Math.cos(Math.toRadians(this.shape.getRotate())) * 0.05;
         double changeY = Math.sin(Math.toRadians(this.shape.getRotate())) * 0.05;
@@ -63,6 +70,7 @@ public abstract class Character {
         this.movement = this.movement.add(changeX, changeY);
     }
 
+    //Tarkastaa ovatko olio ja parametrina annettu olio törmänneet
     public boolean collisionBoolean(Character other) {
         Shape collisionArea = Shape.intersect(this.shape, other.getShape());
         return collisionArea.getBoundsInLocal().getWidth() != -1;
